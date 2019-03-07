@@ -9,7 +9,6 @@ Clone the repo from https://github.com/salbonico/onpointcourses, run bundle inst
 ## Usage
  
 
-
 ## Development
 
 After checking out the repo, run `bundle install to install dependencies. You can use rails server in order to test your work. 
