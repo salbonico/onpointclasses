@@ -8,3 +8,9 @@ Teacher?: <%= @user.teacher %>
   <h2>Facebook UID: <%= @user.uid %></h2>
   <img src="<%= @user.image %>">
   <br>
+
+<h3>Your Courses</h3>
+
+<h3 <%='hidden' if @user.teacher == false %>>Your Students</h3>
+
+<h3 <%='hidden' if @user.teacher == true %>>Your Teachers</h3>

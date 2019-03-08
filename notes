@@ -1,0 +1,5 @@
+No teacher? remove from db and forms and models
+
+user enrolles in courses
+users have many courses through enrollments and vice versa
+enrollments has a box where user must say what they hope to gain from the course

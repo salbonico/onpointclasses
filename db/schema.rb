@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_235240) do
     t.string "name"
     t.string "password_digest"
     t.string "email"
-    t.boolean "teacher", default: false
     t.string "uid"
     t.string "image"
   end
