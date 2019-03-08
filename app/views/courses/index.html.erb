@@ -1,0 +1,10 @@
+<h1>All Courses</h1>
+  <ul>
+<% @courses.each do |course| %>
+
+  <%= link_to "Show #{course.name}", course_path(course) %><br>
+  <em><%= course.teacher %></em>
+  <p><%= course.description %></p>
+  	<%= link_to "Enroll in #{course.name}", enrollment_path(course) %><br>
+ <% end %>
+<% end %>
