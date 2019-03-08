@@ -1,16 +1,10 @@
-<h1>Hello, <%= @user.name %></h1>
+<img src="<%= @user.image %>">
+<h1>Hello, <%= @user.name %>!</h1>
 Email: <%= @user.email %> <br>
-Teacher?: <%= @user.teacher %>
-
-
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
-  <br>
 
 <h3>Your Courses</h3>
-
-<h3 <%='hidden' if @user.teacher == false %>>Your Students</h3>
-
-<h3 <%='hidden' if @user.teacher == true %>>Your Teachers</h3>
+<% @user.courses.each do |course| %>
+    <h5><%= link_to course.name, course_path(course.id) %></h5>
+    <em><%= course.teacher %><br></em>
+    <p><%= course.description %></p>
+  <% end %>

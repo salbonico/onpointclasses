@@ -1,5 +1,8 @@
-No teacher? remove from db and forms and models
+No teacher? for users remove from db and forms and models
+add class type online, in-person, hybrid.
+
 
 user enrolles in courses
 users have many courses through enrollments and vice versa
-enrollments has a box where user must say what they hope to gain from the course
+enrollments has a dropdown add class type online, in-person, hybrid.
+course show has a what company(same as category) sponsered you, they can choose from list or add new.
