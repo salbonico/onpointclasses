@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
 has_many :enrollments
 has_many :users, through: :enrollments
 belongs_to :teacher
-accepts_nested_attributes_for :teachers
+accepts_nested_attributes_for :teacher
 
 def artist_name
     self.try(:artist).try(:name)

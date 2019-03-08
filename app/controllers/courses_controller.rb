@@ -1,6 +1,11 @@
 class CoursesController < ApplicationController
 
 def new
+	if params[:teacher_id] && !Teacher.exists?(params[:teacher_id])
+    redirect_to "/home", alert: "Teacher not found."
+  else
+    @course = Course.new(teacher_id: params[:teacher_id])
+  end
 end
 
 
@@ -17,7 +22,7 @@ end
 def show
 	@course = Course.find(params[:id])
 	@user = User.find(session["user_id"])
-	@enrollment = Enrollment.new(:enrollment_id => @enrollment.id, :user_id => @user.id)
+	@enrollment = Enrollment.new(:course_id => @course.id, :user_id => @user.id)
 end
 
 def index
@@ -47,7 +52,7 @@ end
 private
  
   def course_params
-    params.require(:course).permit(:name, :description, :teacher)
+    params.require(:course).permit(:name, :description, :teacher_id)
   end
 
 
