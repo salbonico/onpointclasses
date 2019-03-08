@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Onpointclasses</title>
+    <title>Onpoint Courses</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <h1>Onpoint Courses</h1>
+    <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/logout";'>Logout</button>
+    <hr>
     <%= yield %>
   </body>
 </html>
