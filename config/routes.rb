@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#socialcreate'
-  resources :courses
-
+  resources :courses do
+  	resources :teachers, only: [:show, :index, :new]
+  end
 end
