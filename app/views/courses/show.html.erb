@@ -1,7 +1,18 @@
 <%= @course.name %><br>
 <%= @course.teacher.name %><br>
 <%= @course.description %><br>
-<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit</button><br>
-<%= button_to "delete", @recipe, :method => :delete %>
+
+		<%= form_for @enrollment do |r| %>
+		<%= r.hidden_field :user_id %>
+		<%= r.hidden_field :course_id, :value => @course.id %>
+		Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
+		<%= radio_button_tag(:course_type, "online") %>Online
+		<br>
+		<%= r.submit "Enroll in this course" %><br>
+		<% end %>
+
+<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
+<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Unenroll from Course</button>
+<%= button_to "Delete Course", @course, :method => :delete %>
 
     

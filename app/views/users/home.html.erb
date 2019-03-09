@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-  
+
 <img src="<%= @user.image %>">
 <h1>Hello, <%= @user.name %>!</h1>
 Email: <%= @user.email %> <br>
@@ -9,6 +9,7 @@ Email: <%= @user.email %> <br>
 <h3>Your Courses</h3>
 <% @user.courses.each do |course| %>
     <h5><%= link_to course.name, course_path(course.id) %></h5>
-    <em><%= course.teacher %><br></em>
+    <em><%= course.teacher.name %><br></em>
     <p><%= course.description %></p>
-  <% end %>
+    
+ <% end %>

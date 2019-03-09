@@ -28,6 +28,7 @@ end
 def index
 	@courses = Course.all
 	@user = User.find(session["user_id"])
+	@enrollment = Enrollment.new(:user_id => @user.id)
 end
 
 def update
@@ -54,9 +55,6 @@ private
   def course_params
     params.require(:course).permit(:name, :description, :teacher_id)
   end
-
-
-
 
 
 end

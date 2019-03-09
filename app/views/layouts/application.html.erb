@@ -12,7 +12,9 @@
   <body>
     <h1>Onpoint Courses</h1>
 
-   
+   <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/home";'>Home</button>
+    <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses";'>All Courses</button>
+    <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/new";'>New Course</button>
     <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/logout";'>Logout</button>
     <hr>
     <%= yield %>

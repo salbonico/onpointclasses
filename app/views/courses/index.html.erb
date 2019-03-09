@@ -2,9 +2,17 @@
   <ul>
 <% @courses.each do |course| %>
 
-  <%= link_to "Show #{course.name}", course_path(course) %><br>
-  <em><%= course.teacher %></em>
-  <p><%= course.description %></p>
-  	<%= link_to "Enroll in #{course.name}", enrollment_path(course) %><br>
+  <%= link_to "#{course.name}", course_path(course) %><br>
+  <em><%= course.teacher.name %></em><br>
+  <%= course.description %>
+  		<%= form_for @enrollment do |r| %>
+		<%= r.hidden_field :user_id %>
+		<%= r.hidden_field :course_id, :value => course.id %>
+		Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
+		<%= radio_button_tag(:course_type, "online") %>Online
+		<br>
+		<%= r.submit "Enroll in this course" %>
+<% end %>
+<br>
 <% end %>
 </ul>
