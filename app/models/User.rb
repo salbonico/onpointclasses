@@ -6,4 +6,8 @@ accepts_nested_attributes_for :courses
 
 has_secure_password
 
+
+
+
+
 end

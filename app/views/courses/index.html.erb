@@ -1,10 +1,15 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <h1>All Courses</h1>
   <ul>
 <% @courses.each do |course| %>
-
+  
   <%= link_to "#{course.name}", course_path(course) %><br>
   <em><%= course.teacher.name %></em><br>
-  <%= course.description %>
+  <%= course.description %><br>
+  		<% if isenrolled(course) == false %> 
   		<%= form_for @enrollment do |r| %>
 		<%= r.hidden_field :user_id %>
 		<%= r.hidden_field :course_id, :value => course.id %>
@@ -12,7 +17,10 @@
 		<%= radio_button_tag(:course_type, "online") %>Online
 		<br>
 		<%= r.submit "Enroll in this course" %>
-<% end %>
+		<% end %>
+        <% end %>
+
+		<button <%='hidden' if isenrolled(course) == false %> onclick='window.location.href="/enrollments/<%= unenrollmentid(course) %>/unenroll";'>Unenroll</button>
 <br>
 <% end %>
 </ul>
