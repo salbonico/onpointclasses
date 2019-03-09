@@ -1,2 +1,7 @@
-<%= @course.name %>
-<%= @course.teacher.name %>
+<%= @course.name %><br>
+<%= @course.teacher.name %><br>
+<%= @course.description %><br>
+<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit</button><br>
+<%= button_to "delete", @recipe, :method => :delete %>
+
+    
