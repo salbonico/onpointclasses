@@ -12,7 +12,7 @@
 		<% end %>
 
 <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
-<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Unenroll from Course</button>
+
 <%= button_to "Delete Course", @course, :method => :delete %>
 
     

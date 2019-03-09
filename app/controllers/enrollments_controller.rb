@@ -11,6 +11,14 @@ def create
 end
 
 def destroy
+enrollment = Enrollment.find(params[:id])
+course= Course.find(enrollment.course_id)
+enrollment.destroy
+
+flash[:notice] = "You have unenrolled from #{course.name}!"
+redirect_to "/home"
+end
+
 
 
 end

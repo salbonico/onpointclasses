@@ -7,9 +7,10 @@
 Email: <%= @user.email %> <br>
 
 <h3>Your Courses</h3>
-<% @user.courses.each do |course| %>
+<% @user.enrollments.each do |enrollment| %>
+	<% course = Course.find(enrollment.course_id) %>
     <h5><%= link_to course.name, course_path(course.id) %></h5>
     <em><%= course.teacher.name %><br></em>
     <p><%= course.description %></p>
-    
+    <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/enrollments/<%= enrollment.id %>/unenroll";'>Unenroll</button>
  <% end %>
