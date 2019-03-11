@@ -5,8 +5,12 @@ def new
 end
 
 def create
-	@teacher = Teacher.create(teacher_params)
-	redirect_to "/teachers/#{@teacher.id}"
+	@teacher = Teacher.new(teacher_params)
+	if @teacher.save
+      redirect_to teacher_path(@teacher)
+    else
+      render :new
+	end
 end
 
 def index

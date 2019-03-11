@@ -2,6 +2,21 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+<% if @enrollment.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@enrollment.errors.count, "error") %>
+      prohibited enrollment in <%= @enrollment.course.name %>:
+    </h2>
+ 
+    <ul>
+    <% @enrollment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <% if params[:teacher_id] %>
 	<h1><%= @teacher.name + "'s" %></h1>
 	<%end%>
@@ -20,7 +35,7 @@
 		<%= r.hidden_field :user_id %>
 		<%= r.hidden_field :course_id, :value => course.id %>
 		Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
-		<%= radio_button_tag(:course_type, "online") %>Online
+		<%= radio_button_tag(:course_type, "online", true) %>Online
 		<br>
 		<%= r.submit "Enroll in this course" %>
 		<% end %>

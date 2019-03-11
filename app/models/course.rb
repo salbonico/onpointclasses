@@ -7,8 +7,9 @@ validates :name, presence: true
 validates :teacher_id, presence: true
 validates :description, presence: true
 validates :description, length: { minimum: 10 }
-validates :bio, length: { maximum: 500 }
+validates :description, length: { maximum: 500 }
 validates :name, uniqueness: true
+
 def artist_name
     self.try(:artist).try(:name)
   end

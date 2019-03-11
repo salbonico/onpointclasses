@@ -15,8 +15,12 @@ end
 
 
 def create
-	@course = Course.create(course_params)
-	redirect_to "/courses/#{@course.id}"
+	@course = Course.new(course_params)
+	if @course.save
+		redirect_to "/courses/#{@course.id}"
+	else
+		render :new
+	end
 end
 
 def show

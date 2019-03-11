@@ -4,9 +4,14 @@ def new
 end
 
 def create
-	@user = User.create(user_params)
-	session[:user_id] = @user.id
-	redirect_to "/home"
+	@user = User.new(user_params)
+	if @user.save
+     session[:user_id] = @user.id
+	 redirect_to "/home"
+    else
+      render :new
+	end
+	
 end
 
 

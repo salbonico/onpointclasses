@@ -1,3 +1,19 @@
+<% if @enrollment.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@enrollment.errors.count, "error") %>
+      prohibited enrollment:
+    </h2>
+ 
+    <ul>
+    <% @enrollment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <h2><%= @course.name %></h2>
 <%= link_to "#{@course.teacher.name}", teacher_courses_path(@course.teacher.id) %><br>
 <%= @course.description %><br>
@@ -6,7 +22,7 @@
 		<%= r.hidden_field :user_id %>
 		<%= r.hidden_field :course_id, :value => @course.id %>
 		Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
-		<%= radio_button_tag(:course_type, "online") %>Online
+		<%= radio_button_tag(:course_type, "online", true) %>Online
 		<br>
 		<%= r.submit "Enroll in this course" %><br>
 		<% end %>
@@ -17,4 +33,4 @@
 <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
 <%= button_to "Delete Course", @course, :method => :delete %>
 
-    
+ 
