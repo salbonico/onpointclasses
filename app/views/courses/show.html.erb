@@ -1,5 +1,5 @@
 <%= @course.name %><br>
-<%= @course.teacher.name %><br>
+<%= link_to "#{@course.teacher.name}", teacher_path(@course.teacher.id) %><br>
 <%= @course.description %><br>
 
 		<%= form_for @enrollment do |r| %>
@@ -12,7 +12,6 @@
 		<% end %>
 
 <button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
-
 <%= button_to "Delete Course", @course, :method => :delete %>
 
     
