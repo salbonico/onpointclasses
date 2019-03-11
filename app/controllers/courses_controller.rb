@@ -28,10 +28,11 @@ end
 def index
 	if params[:teacher_id]
 		@courses = Teacher.find(params[:teacher_id]).courses
+		@teacher = Teacher.find(params[:teacher_id])
 	else
 	@courses = Course.all
 	end
-	
+
 	@user = User.find(session["user_id"])
 	@enrollment = Enrollment.new(:user_id => @user.id)
 end

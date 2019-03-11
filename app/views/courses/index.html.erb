@@ -2,7 +2,11 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-<h1>All Courses</h1>
+<h1>Courses</h1>
+	<% if params[:teacher_id] %>
+	<h1><%= @teacher.name %></h1>
+	<%= link_to "Create a course by #{@teacher.name}", new_teacher_course_path(@teacher) %>
+	<% end %>
   <ul>
 <% @courses.each do |course| %>
   

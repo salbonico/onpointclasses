@@ -1,5 +1,5 @@
 <%= @course.name %><br>
-<%= link_to "#{@course.teacher.name}", teacher_path(@course.teacher.id) %><br>
+<%= link_to "#{@course.teacher.name}", teacher_courses_path(@course.teacher.id) %><br>
 <%= @course.description %><br>
 
 		<%= form_for @enrollment do |r| %>
