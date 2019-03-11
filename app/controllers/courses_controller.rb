@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
 def new
+	redirect_to "/home" unless isadmin?
 	if params[:teacher_id] && !Teacher.exists?(params[:teacher_id])
     redirect_to "/home", alert: "Teacher not found."
   else
@@ -10,11 +11,13 @@ end
 
 
 def edit
+	redirect_to "/home" unless isadmin?
 	@course = Course.find(params[:id])
 end
 
 
 def create
+	redirect_to "/home" unless isadmin?
 	@course = Course.new(course_params)
 	if @course.save
 		redirect_to "/courses/#{@course.id}"
@@ -42,7 +45,7 @@ def index
 end
 
 def update
-	
+	redirect_to "/home" unless isadmin?
     @course = Course.find(params[:id])
 
     @course.update(course_params)
@@ -56,6 +59,7 @@ def update
 end
 
 def destroy
+	redirect_to "/home" unless isadmin?
 	course = Course.find(params[:id])
     course.destroy
 end

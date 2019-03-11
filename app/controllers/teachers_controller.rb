@@ -1,10 +1,12 @@
 class TeachersController < ApplicationController
 
 def new
+	redirect_to "/home" unless isadmin?
 @teacher = Teacher.new
 end
 
 def create
+	redirect_to "/home" unless isadmin?
 	@teacher = Teacher.new(teacher_params)
 	if @teacher.save
       redirect_to teacher_path(@teacher)

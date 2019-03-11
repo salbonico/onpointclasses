@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 	end
 
     def socialcreate
+    	
     	if session[:user_id] != [] && session[:user_id] != nil
     		redirect_to '/home'
     	else
