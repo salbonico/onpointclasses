@@ -10,7 +10,7 @@ validates :description, length: { minimum: 10 }
 validates :description, length: { maximum: 500 }
 validates :name, uniqueness: true
 
-
+scope :id_check, -> (courseid) { where("id == ? ", courseid)}
 
 
 def teacher_name
