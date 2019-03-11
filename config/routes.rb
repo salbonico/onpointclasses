@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/enrollments/:id/unenroll' => 'enrollments#destroy'
 
   resources :courses 	
+  
   resources :teachers do
   	resources :courses, only: [:show, :index, :new] 
   end

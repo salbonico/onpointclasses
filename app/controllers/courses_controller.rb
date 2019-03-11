@@ -26,7 +26,12 @@ def show
 end
 
 def index
+	if params[:teacher_id]
+		@courses = Teacher.find(params[:teacher_id]).courses
+	else
 	@courses = Course.all
+	end
+	
 	@user = User.find(session["user_id"])
 	@enrollment = Enrollment.new(:user_id => @user.id)
 end
