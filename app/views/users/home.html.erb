@@ -6,6 +6,7 @@
 <h1>Hello, <%= @user.name %>!</h1>
 Email: <%= @user.email %> <br>
 
+<% if !isadmin? %>
 <h2>Your Courses (<%=@user.enrollments.count %>)</h2>
 <h3>Online Courses (<%=@online.count %>)</h3>
 <% @online.each do |enrollment| %>
@@ -25,3 +26,5 @@ Email: <%= @user.email %> <br>
     Description:<br> <%= course.description %><br>
     <button onclick='window.location.href="/enrollments/<%= enrollment.id %>/unenroll";'>Unenroll</button>
  <% end %>
+ <% end %>
+

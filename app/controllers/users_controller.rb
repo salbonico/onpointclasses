@@ -17,13 +17,14 @@ end
 
 
 def home
-	
+
 	if session[:user_id] == nil || session[:user_id] == ""
 		redirect_to '/login' 
 	else
 	@user = User.find(session[:user_id])
 	@online = @user.enrollments.online
 	@classroom = @user.enrollments.classroom 
+	
 	end
 end
 
