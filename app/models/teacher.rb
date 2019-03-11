@@ -3,4 +3,8 @@ has_many :courses
 has_many :enrollments, through: :courses
 validates :name, presence: true
 validates :name, uniqueness: true
+
+scope :name_check, -> (teacherid) { where("id == ? ", teacherid)}
+
+
 end

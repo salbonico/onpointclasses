@@ -29,7 +29,7 @@
 <% @courses.each do |course| %>
   
   <%= link_to "#{course.name}", course_path(course),{ :class=>"course_name" } %><br>
-  <em><%= link_to "#{course.teacher.name}", teacher_courses_path(course.teacher.id) %></em><br>
+  <em><%= link_to "#{course.teacher_name}", teacher_courses_path(course.teacher_id) %></em><br>
   <%= course.description %><br>
   		<% if isenrolled(course) == false && !isadmin? %> 
   		<%= form_for @enrollment do |r| %>

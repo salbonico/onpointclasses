@@ -62,6 +62,7 @@ def destroy
 	redirect_to "/home" unless isadmin?
 	course = Course.find(params[:id])
     course.destroy
+    redirect_to "/courses"
 end
 
 private

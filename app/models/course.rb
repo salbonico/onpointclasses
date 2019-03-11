@@ -10,14 +10,19 @@ validates :description, length: { minimum: 10 }
 validates :description, length: { maximum: 500 }
 validates :name, uniqueness: true
 
-def artist_name
-    self.try(:artist).try(:name)
-  end
 
-  def artist_name=(name)
-    artist = Artist.find_or_create_by(name: name)
-    self.artist = artist
-  end
+
+
+def teacher_name
+	teacher = Teacher.name_check(self.teacher_id)
+	if teacher == []
+		return "No teacher yet"
+	else 
+    teacher[0].name
+	end
+end
+
+  
 
 
 end
