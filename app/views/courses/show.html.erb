@@ -14,10 +14,10 @@
 <% end %>
 
 
-<h2><%= @course.name %></h2>
+<p class = "course_name"><%= @course.name %></p>
 <%= link_to "#{@course.teacher.name}", teacher_courses_path(@course.teacher.id) %><br>
 <%= @course.description %><br>
-		<% if isenrolled(@course) == false %> 
+		<% if isenrolled(@course) == false && !isadmin? %> 
 		<%= form_for @enrollment do |r| %>
 		<%= r.hidden_field :user_id %>
 		<%= r.hidden_field :course_id, :value => @course.id %>
@@ -30,7 +30,9 @@
 		<br>
 		<button <%='hidden' if isenrolled(@course) == false %> onclick='window.location.href="/enrollments/<%= unenrollmentid(@course) %>/unenroll";'>Unenroll</button>
 <br>
-<button <%='hidden' if session["user_id"] == nil %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
+<button <%='hidden' if !isadmin? %> onclick='window.location.href="/courses/<%= @course.id %>/edit";'>Edit Course</button>
+<% if isadmin? %>
 <%= button_to "Delete Course", @course, :method => :delete %>
+<% end %>
 
  

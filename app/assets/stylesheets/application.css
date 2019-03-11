@@ -18,3 +18,7 @@
   background-color: red;
   display: table;
 }
+
+.course_name {
+  font-size: 26px;
+}
