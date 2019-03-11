@@ -15,7 +15,8 @@ Email: <%= @user.email %> <br>
     Course Type: <b><%= enrollment.course_type %></b><br>
     Teacher: <em><%= course.teacher.name %><br></em>
     Description:<br> <%= course.description %><br>
-    <button onclick='window.location.href="/enrollments/<%= enrollment.id %>/unenroll";'>Unenroll</button>
+	<%= button_to "Unenroll", unenroll_path(enrollment), :method => :delete %>
+		
  <% end %>
 <h3>Classroom Courses (<%=@classroom.count %>)</h3>
 <% @classroom.each do |enrollment| %>
@@ -24,7 +25,7 @@ Email: <%= @user.email %> <br>
     Course Type: <b><%= enrollment.course_type %></b><br>
     Teacher: <em><%= course.teacher.name %><br></em>
     Description:<br> <%= course.description %><br>
-    <button onclick='window.location.href="/enrollments/<%= enrollment.id %>/unenroll";'>Unenroll</button>
+    <%= button_to "Unenroll", unenroll_path(enrollment), :method => :delete %>
  <% end %>
  <% end %>
 

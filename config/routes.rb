@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#socialcreate'
   post '/enrollments/new' => 'enrollments#create', as: 'enrollments'
-  get '/enrollments/:id/unenroll' => 'enrollments#destroy'
+  delete '/enrollments/:id/unenroll' => 'enrollments#destroy', as: 'unenroll'
 
   resources :courses 	
   

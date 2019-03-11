@@ -40,6 +40,9 @@
 		<%= r.submit "Enroll in this course" %>
 		<% end %>
         <% end %>
+        <% if isenrolled(course) %>
+		<%= button_to "Unenroll", unenroll_path(unenrollmentid(course)), :method => :delete%>
+		<% end %>
 <br>
 <% end %>
 
