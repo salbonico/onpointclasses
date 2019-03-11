@@ -15,7 +15,7 @@
 
 
 <p class = "course_name"><%= @course.name %></p>
-<%= link_to "#{@course.teacher.name}", teacher_courses_path(@course.teacher.id) %><br>
+<%= link_to "#{@course.teacher_name}", teacher_courses_path(@course.teacher_id_check) %><br>
 <%= @course.description %><br>
 		<% if !isenrolled(@course) && !isadmin? %> 
 		<%= form_for @enrollment do |r| %>

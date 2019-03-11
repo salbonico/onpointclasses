@@ -14,15 +14,26 @@ validates :name, uniqueness: true
 
 
 def teacher_name
-	teacher = Teacher.name_check(self.teacher_id)
+	teacher = Teacher.id_check(self.teacher_id)
 	if teacher == []
-		return "No teacher yet"
+		self.teacher_id = 10
+		self.save
+		return "No Teacher Yet"
 	else 
     teacher[0].name
 	end
 end
 
-  
+ def teacher_id_check
+	teacher = Teacher.id_check(self.teacher_id)
+	if teacher == []
+		self.teacher_id = 10
+		self.save
+		return 10
+	else 
+    teacher[0].id
+	end
+end 
 
 
 end
