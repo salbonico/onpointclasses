@@ -5,4 +5,4 @@ add class type online, in-person, hybrid.
 user enrolles in courses
 users have many courses through enrollments and vice versa
 enrollments has a dropdown add class type online, in-person, hybrid.
-course show has a what company(same as category) sponsered you, they can choose from list or add new.
+course show has a what company(same as category) sponsored you, they can choose from list or add new.

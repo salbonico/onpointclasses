@@ -17,10 +17,11 @@
   </div>
 <% end %>
 
+
+<h1>Courses
 <% if params[:teacher_id] %>
-	<h1><%= @teacher.name + "'s" %></h1>
-	<%end%>
-<h1>Courses</h1>
+   by <%= @teacher.name %>
+  <%end%></h1>
 	<% if params[:teacher_id] && isadmin? %>
 	<%= link_to "Create a course by #{@teacher.name}", new_teacher_course_path(@teacher) %>
 	<% end %>
