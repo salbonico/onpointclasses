@@ -4,6 +4,12 @@ def new
 	@user = User.new
 end
 
+def admin
+	redirect_to "/home" unless isadmin?
+	@users = User.all
+end
+
+
 def create
 	@user = User.new(user_params)
 	if @user.save
@@ -17,7 +23,6 @@ end
 
 
 def home
-
 	if session[:user_id] == nil || session[:user_id] == ""
 		redirect_to '/login' 
 	else
@@ -26,6 +31,31 @@ def home
 	@classroom = @user.enrollments.classroom 
 	
 	end
+end
+
+def edit
+	redirect_to "/home" unless isadmin?
+	@user = User.find(params[:id])
+end
+
+def update
+	redirect_to "/home" unless isadmin?
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      flash[:notice] = "#{@user.name} updated."
+      redirect_to "/home"
+    else
+      render :edit
+    end 
+end
+
+def destroy
+	redirect_to "/home" unless isadmin?
+	user = User.find(params[:format])
+    user.destroy
+    flash[:notice] = "You have deleted #{user.name}."
+    redirect_to "/home"
 end
 
 private

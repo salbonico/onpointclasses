@@ -28,4 +28,7 @@ Email: <%= @user.email %> <br>
     <%= button_to "Unenroll", unenroll_path(enrollment), :method => :delete %>
  <% end %>
  <% end %>
-
+<br>
+<% if isadmin? %>
+<%= button_to "User Admin", user_admin_path, :method => :get %>
+<% end %>

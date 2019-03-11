@@ -1,0 +1,24 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being signed up:
+    </h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<%= form_for :user, url: "/users/#{@user.id}" do |f| %>
+  Username: <%= f.text_field :name %>
+  Password: <%= f.password_field :password %>
+  Email: <%= f.email_field :email %>
+  Admin: <%= f.check_box :admin, {}, "true", "false" %>
+  <%= f.submit %>
+<% end %>
