@@ -13,10 +13,10 @@
 <% end %>
 
 <%= form_for @course do |f| %>
-<%= f.label "Name" %>
-<%= f.text_field :name %><br>
-<%= f.label "Description" %>
-<%= f.text_area :description %><br>
-Teacher <%= f.collection_select :teacher_id, Teacher.all, :id, :name %><br>
-<%= f.submit %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br>
+  <%= f.label "Description" %>
+  <%= f.text_area :description %><br>
+  Teacher <%= f.collection_select :teacher_id, Teacher.all, :id, :name %><br>
+  <%= f.submit %>
 <% end %>

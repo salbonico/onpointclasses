@@ -17,24 +17,24 @@
 <p class = "course_name"><%= @course.name %></p>
 <%= link_to "#{@course.teacher_name}", teacher_courses_path(@course.teacher_id_check) %><br>
 <%= @course.description %><br>
-		<% if !isenrolled(@course) && !isadmin? %> 
-		<%= form_for @enrollment do |r| %>
+<% if !isenrolled(@course) && !isadmin? %> 
+	<%= form_for @enrollment do |r| %>
 		<%= r.hidden_field :user_id %>
 		<%= r.hidden_field :course_id, :value => @course.id %>
 		Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
 		<%= radio_button_tag(:course_type, "online", true) %>Online
 		<br>
 		<%= r.submit "Enroll in this course" %><br>
-		<% end %>
-		<% end %>
-		<br>
-		<% if isenrolled(@course) %>
-		<%= button_to "Unenroll", unenroll_path(unenrollmentid(@course)), :method => :delete %>
-		<% end %>
+	<% end %>
+<% end %>
+	<br>
+<% if isenrolled(@course) %>
+	<%= button_to "Unenroll", unenroll_path(unenrollmentid(@course)), :method => :delete %>
+<% end %>
 <br>
 <% if isadmin? %>
-<%= button_to "Edit Course", edit_course_path(@course), :method => :get %>
-<%= button_to "Delete Course", @course, :method => :delete %>
+	<%= button_to "Edit Course", edit_course_path(@course), :method => :get %>
+	<%= button_to "Delete Course", @course, :method => :delete %>
 <% end %>
 
  

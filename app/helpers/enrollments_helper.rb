@@ -1,11 +1,11 @@
 module EnrollmentsHelper
 
 	def isenrolled(course)
-	user = User.find(session[:user_id])
+		user = User.find(session[:user_id])
 		if user.enrollments.find_by(:course_id => course.id)
-		 return true
+			return true
 		else
-		 return false
+			return false
 		end
 	end
 
