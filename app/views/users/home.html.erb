@@ -6,8 +6,18 @@
 <h1>Hello, <%= @user.name %>!</h1>
 Email: <%= @user.email %> <br>
 
-<h3>Your Courses</h3>
-<% @user.enrollments.each do |enrollment| %>
+<h2>Your Courses (<%=@user.enrollments.count %>)</h2>
+<h3>Online Courses (<%=@online.count %>)</h3>
+<% @online.each do |enrollment| %>
+	<% course = Course.find(enrollment.course_id) %>
+    <b><h3><%= link_to course.name, course_path(course.id) %></h3></b>
+    Course Type: <b><%= enrollment.course_type %></b><br>
+    Teacher: <em><%= course.teacher.name %><br></em>
+    Description:<br> <%= course.description %><br>
+    <button onclick='window.location.href="/enrollments/<%= enrollment.id %>/unenroll";'>Unenroll</button>
+ <% end %>
+<h3>Classroom Courses (<%=@classroom.count %>)</h3>
+<% @classroom.each do |enrollment| %>
 	<% course = Course.find(enrollment.course_id) %>
     <b><h3><%= link_to course.name, course_path(course.id) %></h3></b>
     Course Type: <b><%= enrollment.course_type %></b><br>

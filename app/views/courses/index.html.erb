@@ -2,9 +2,11 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+<% if params[:teacher_id] %>
+	<h1><%= @teacher.name + "'s" %></h1>
+	<%end%>
 <h1>Courses</h1>
 	<% if params[:teacher_id] %>
-	<h1><%= @teacher.name %></h1>
 	<%= link_to "Create a course by #{@teacher.name}", new_teacher_course_path(@teacher) %>
 	<% end %>
   <ul>
@@ -23,8 +25,7 @@
 		<%= r.submit "Enroll in this course" %>
 		<% end %>
         <% end %>
-
-		<button <%='hidden' if isenrolled(course) == false %> onclick='window.location.href="/enrollments/<%= unenrollmentid(course) %>/unenroll";'>Unenroll</button>
 <br>
 <% end %>
+
 </ul>

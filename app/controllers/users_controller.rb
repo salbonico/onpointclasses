@@ -15,6 +15,8 @@ def home
 		redirect_to '/login' 
 	else
 	@user = User.find(session[:user_id])
+	@online = @user.enrollments.online
+	@classroom = @user.enrollments.classroom 
 	end
 end
 
