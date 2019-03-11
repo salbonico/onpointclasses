@@ -1,6 +1,6 @@
 <h1>All Teachers</h1>
   <ul>
 <% @teachers.each do |teacher| %>
-<%= link_to "#{teacher.name}", teacher_courses_path(teacher) %><br>
+<%= link_to "#{teacher.name}", teacher_path(teacher) %><br>
 
 <% end %>
