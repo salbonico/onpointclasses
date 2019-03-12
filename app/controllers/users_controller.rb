@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
 	def new
+		if session[:user_id] != nil || session[:user_id] != ""
+		redirect_to '/home' 
+		else
 		@user = User.new
+		end
 	end
 
 	def admin
@@ -11,14 +15,17 @@ class UsersController < ApplicationController
 
 
 	def create
-		@user = User.new(user_params)
-		if @user.save
-	     session[:user_id] = @user.id
-		 redirect_to "/home"
-	    else
-	     render :new
+		if session[:user_id] != nil || session[:user_id] != ""
+			redirect_to '/home' 
+		else
+			@user = User.new(user_params)
+				if @user.save
+	     		session[:user_id] = @user.id
+		 		redirect_to "/home"
+	    	else
+	     		render :new
+			end
 		end
-		
 	end
 
 

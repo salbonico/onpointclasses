@@ -34,7 +34,7 @@
   	<%= form_for @enrollment do |r| %>
 		   <%= r.hidden_field :user_id %>
 		   <%= r.hidden_field :course_id, :value => course.id %>
-		   Course Type: <%= radio_button_tag(:course_type, "classroom") %Classroom
+		   Course Type: <%= radio_button_tag(:course_type, "classroom") %>Classroom
 		   <%= radio_button_tag(:course_type, "online", true) %>Online
 		   <br>
 		   <%= r.submit "Enroll in this course" %>
