@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
 	def new
-		if session[:user_id] != nil || session[:user_id] != ""
-		redirect_to '/home' 
+		if session[:user_id] != nil
+		redirect_to "/home"
 		else
 		@user = User.new
 		end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
 
 	def create
-		if session[:user_id] != nil || session[:user_id] != ""
+		if session[:user_id] != nil 
 			redirect_to '/home' 
 		else
 			@user = User.new(user_params)
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
 
 	def home
-		if session[:user_id] == nil || session[:user_id] == ""
+		if session[:user_id] == nil 
 			redirect_to '/login' 
 		else
 			@user = User.find(session[:user_id])
