@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#socialcreate'
   post '/enrollments/new' => 'enrollments#create', as: 'enrollments'
   delete '/enrollments/:id/unenroll' => 'enrollments#destroy', as: 'unenroll'
+  get '/available' => 'courses#available' 
+
 
   resources :courses 	
   

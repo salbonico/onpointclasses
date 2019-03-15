@@ -3,6 +3,7 @@ class Enrollment < ActiveRecord::Base
 	belongs_to :course
 	validates :course_type, presence: true
 
+	
 	scope :classroom, -> { where(course_type: "classroom") }
 	scope :online, -> { where(course_type: "online") }
 

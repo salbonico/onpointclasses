@@ -34,14 +34,22 @@ class CoursesController < ApplicationController
 
 	def index
 		if params[:teacher_id]
-			@courses = Teacher.find(params[:teacher_id]).courses
 			@teacher = Teacher.find(params[:teacher_id])
+			@courses = @teacher.courses
 		else
 			@courses = Course.all
 		end
 		@user = User.find(session["user_id"])
 		@enrollment = Enrollment.new(:user_id => @user.id)
 	end
+
+    def available
+       @user = User.find(session["user_id"])
+       @courses = Course.enrollment_check(@user)
+       @enrollment = Enrollment.new(:user_id => @user.id)
+    end
+
+
 
 	def update
 		redirect_to "/home" unless isadmin?

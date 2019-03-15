@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
 	validates :name, uniqueness: true
 
 	scope :id_check, -> (courseid) { where("id == ? ", courseid)}
-
+    
 
 	def teacher_name
 		teacher = Teacher.id_check(self.teacher_id)
@@ -34,6 +34,16 @@ class Course < ActiveRecord::Base
 	    	teacher[0].id
 		end
 	end 
+
+	def self.enrollment_check(user)
+		allcourses = self.all
+
+		allcourses.map do |course|
+		course if !course.users.include?(user)
+
+		end
+
+	end
 
 
 end

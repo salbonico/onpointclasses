@@ -4,8 +4,8 @@ class EnrollmentsController < ApplicationController
 		course = Course.find(params[:enrollment][:course_id])
 		user = User.find(session[:user_id])
 		@enrollment = Enrollment.new(:course_id => course.id, :user_id => user.id, :course_type => params[:course_type])
-		   if @enrollment.save
-			   flash[:notice] = "You have enrolled in #{course.name}!"
+		if @enrollment.save
+			flash[:notice] = "You have enrolled in #{course.name}!"
 			redirect_to "/home"
 		else
 			if params[:teacher_id]
@@ -14,7 +14,7 @@ class EnrollmentsController < ApplicationController
 			else
 				@courses = Course.all
 			end
-		render "courses/index"
+			render "courses/index"
 		end
 	end
 
